@@ -73,9 +73,9 @@ xy <- rgdal::project(lnglat, proj = "+proj=utm +zone=6 +ellps=WGS84")
 # NOTE: Numbering of the .dat files is wrong. Correct order is 4, 1, 2 3, 5 ... 11 (12 is duplicate of 8)
 t <- start_times_to_utc_range(paste(df$date, df$time), minutes_occupied = 59.5)
 # Combine into new table
-df <- data.frame(t_start = t[, 1], t_stop = t[, 2], x = xy[, 1], y = xy[, 2], z = df$h, stringsAsFactors = FALSE)
+df <- data.frame(t_begin = t[, 1], t_end = t[, 2], x = xy[, 1], y = xy[, 2], z = df$h, stringsAsFactors = FALSE)
 # Sort by time
-df <- df[order(df$t_start), ]
+df <- df[order(df$t_begin), ]
 
 ## Clean data
 # Second measurement is clearly wrong:
@@ -106,9 +106,9 @@ xy <- rgdal::project(lnglat, proj = "+proj=utm +zone=6 +ellps=WGS84")
 # UTC times verified against the GPS times in the Trimble files (GPS/ice/glac Folder/sess*/*.dat).
 t <- start_times_to_utc_range(paste(df$date, df$time), minutes_occupied = 29.5)
 # Combine into new table
-df <- data.frame(t_start = t[, 1], t_stop = t[, 2], x = xy[, 1], y = xy[, 2], z = df$h, stringsAsFactors = FALSE)
+df <- data.frame(t_begin = t[, 1], t_end = t[, 2], x = xy[, 1], y = xy[, 2], z = df$h, stringsAsFactors = FALSE)
 # Sort by time
-df <- df[order(df$t_start), ]
+df <- df[order(df$t_begin), ]
 
 ## Save result
 long <- df
