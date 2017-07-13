@@ -97,7 +97,7 @@ names(df) <- c("id", "date", "nday", "time", "dday", "x", "y", "z", "lat", "lng"
 # Compute lat,lng in decimal degrees
 lng <- strsplit(trimws(df$lng), "ø|'|\"")
 lat <- strsplit(trimws(df$lat), "ø|'|\"")
-lnglat <- t(sapply(seq_along(lng_vec), function(i) {
+lnglat <- t(sapply(seq_along(lng), function(i) {
   lnglat_dms_to_ddeg(lng[[i]][1], lng[[i]][2], lng[[i]][3], lng[[i]][4], lat[[i]][1], lat[[i]][2], lat[[i]][3], lat[[i]][4])
 }))
 # Transform to UTM
